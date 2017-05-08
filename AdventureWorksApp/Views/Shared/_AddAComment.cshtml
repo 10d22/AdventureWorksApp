@@ -1,0 +1,21 @@
+﻿@model AdventureWorksApp.Models.Comment
+
+@Html.ValidationSummary(true)
+
+<div class="add-comment-tool">
+
+    <div>
+        <span class="comment-editor-label">
+            @Html.LabelFor(model => model.Text)
+        </span>
+        <span class="comment-editor-field">
+            @Html.EditorFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text)
+        </span>
+    </div>
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
+</div>

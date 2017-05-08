@@ -1,0 +1,25 @@
+﻿@model IEnumerable<AdventureWorksApp.Models.Photo>
+
+@foreach (var item in Model)
+{
+    <h3>
+        "@Html.DisplayFor(modelItem => item.Title)"
+    </h3>
+
+
+        <img width="400" src="@Url.Action("GetThumpnail", "Photo", new { PhotoId = item.PhotoID })" />
+
+        <h3>Description</h3>
+        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+        <table>
+            <tr>
+                <td>Owner:</td>
+                <td>@Html.DisplayFor(modelItem => item.Owner)</td>
+            </tr>
+            <tr>
+                <td>Created Date:</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+            </tr>
+        </table>
+        @Html.ActionLink("Details", "Details", new { id = item.PhotoID })
+}

@@ -1,0 +1,39 @@
+﻿@model AdventureWorksApp.Models.Photo
+
+@{
+    ViewBag.Title = "Photo: " + Model.Title;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h2>"@Model.Title"</h2>
+    @if (Model.PhotoFile != null)
+    {
+        <img width="800" src="@Url.Action("GetImage", "Photo", new { Model.PhotoID })" />
+    }
+    <h3>Description</h3>
+    <p>@Html.DisplayFor(model => model.Description)</p>
+    <table>
+        <tr>
+            <td>Owner:</td>
+            <td>@Html.DisplayFor(model => model.Owner)</td>
+        </tr>
+        <tr>
+            <td>Created Date:</td>
+            <td>@Html.DisplayFor(model => model.CreatedDate)</td>
+        </tr>
+    </table>
+    @Html.Action("_CommentsForPhoto", "Comment", new { PhotoID = Model.PhotoID })
+
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</body>
+</html>
